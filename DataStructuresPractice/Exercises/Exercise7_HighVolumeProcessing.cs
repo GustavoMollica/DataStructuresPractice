@@ -1,9 +1,5 @@
 ﻿using DataStructuresPractice.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace DataStructuresPractice.Exercises
 {
@@ -11,6 +7,9 @@ namespace DataStructuresPractice.Exercises
     {
         public async Task Execute()
         {
+            var stopwatch = new Stopwatch();
+
+            stopwatch.Start();
             var integrationService = new IntegrationsService();
             var allUsers = await integrationService.GetAllUsers();
 
@@ -20,11 +19,12 @@ namespace DataStructuresPractice.Exercises
             var usersUnique = userCache.Values.ToList();
 
             var usersByNat = userService.GetUserByNat(usersUnique);
+            stopwatch.Stop();
 
             Console.WriteLine($"Quantidade total de usuarios que acessou o sistema nesse mes:{allUsers.Count}\n" +
-                $"Quantidade de usuarios unicos que acessaram o sistema esse mes:{usersUnique.Count}\n" +
-                $"Tempo de execução do sistema:\n" +
-                $"Quantidade dos usuarios unicos por pais:");
+                $"Quantidade de usuarios sem repetição que acessaram o sistema esse mes:{usersUnique.Count}\n" +
+                $"Tempo de execução do sistema:{stopwatch.ElapsedMilliseconds} milissegundo\n" +
+                $"Quantidade dos usuarios por pais:");
 
             foreach (var user in usersByNat)
             {
