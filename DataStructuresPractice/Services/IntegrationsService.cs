@@ -13,7 +13,6 @@ namespace DataStructuresPractice.Services
 
         public async Task<RandomUserResponse> GetUsers()
         {
-            using var httpClient = new HttpClient();
             var response = await _httpClient.GetAsync("https://randomuser.me/api/?results=500&nat=br,us,dk,ua");
 
             if (response.IsSuccessStatusCode)
