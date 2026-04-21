@@ -11,9 +11,10 @@ namespace DataStructuresPractice.Exercises
 
             stopwatch.Start();
             var integrationService = new IntegrationsService();
-            var allUsers = await integrationService.GetAllUsers();
+            var response = await integrationService.GetUsers();
 
             var userService = new UserService();
+            var allUsers = userService.GenerateDataVolume(response);
 
             var userCache = userService.CacheUsers(allUsers);
             var usersUnique = userCache.Values.ToList();
