@@ -25,7 +25,7 @@ namespace DataStructuresPractice.Exercises
             Console.WriteLine($"Quantidade total de usuarios que acessou o sistema nesse mes:{allUsers.Count}\n" +
                 $"Quantidade de usuarios sem repetição que acessaram o sistema esse mes:{usersUnique.Count}\n" +
                 $"Tempo de execução do sistema:{stopwatch.ElapsedMilliseconds} milissegundo\n" +
-                $"Quantidade dos usuarios por pais:");
+                $"Quantidade de usuarios por pais:");
 
             foreach (var user in usersByNat)
             {
