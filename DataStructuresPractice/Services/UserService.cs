@@ -9,7 +9,20 @@ using System.Threading.Tasks;
 namespace DataStructuresPractice.Services
 {
     public class UserService
-    {        
+    {
+        public List<User> GenerateDataVolume(RandomUserResponse randomUserResponse)
+        {
+            //apenas para simular uma quantidade de dados em um cenario real            
+            var users = new List<User>();
+
+            for (var i = 0; i < 200; i++)
+            {
+                users.AddRange(randomUserResponse.Results);
+            }
+
+            return users;
+        }
+
         public Dictionary<string, User> CacheUsers(List<User> users)
         {
             var cacheUsers = new Dictionary<string, User>();
