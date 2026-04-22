@@ -1,4 +1,5 @@
 ﻿using DataStructuresPractice.Services;
+using DataStructuresPractice.Utils;
 using System.Diagnostics;
 
 namespace DataStructuresPractice.Exercises
@@ -11,10 +12,10 @@ namespace DataStructuresPractice.Exercises
 
             stopwatch.Start();
             var integrationService = new IntegrationsService();
-            var response = await integrationService.GetUsers();
+            var users = await integrationService.GetUsers();
 
             var userService = new UserService();
-            var allUsers = userService.GenerateDataVolume(response);
+            var allUsers = DataGenerator.GenerateDataVolume(users.Results, 200);
 
             var userCache = userService.CacheUsers(allUsers);
             var usersUnique = userCache.Values.ToList();
